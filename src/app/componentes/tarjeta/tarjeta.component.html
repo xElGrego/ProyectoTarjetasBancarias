@@ -1,0 +1,95 @@
+<div class="container mt-5">
+    <div class="row">
+        <!-- Offset desplaza columnas hacia la derecha -->
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="titulo">TARJETA DE CREDITO</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">{{ accion | uppercase}} TARJETA</h5>
+                    <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i 
+                                    class="fas fa-user"
+                                    [class.green-icon] ="this.form.get('titular')?.valid"
+                                    [class.red-icon] = "this.form.get('titular')?.invalid && this.form.get('titular')?.touched"
+                                ></i>
+                            </span>
+                            <input formControlName="titular" type="text" class="form-control" placeholder="Titular">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i 
+                                class="fas fa-credit-card"   
+                                [class.green-icon] = "this.form.get('numeroTarjeta')?.valid"
+                                [class.red-icon] = "this.form.get('numeroTarjeta')?.invalid && this.form.get('numeroTarjeta')?.touched " 
+                                ></i>
+                            </span>
+                            <input formControlName="numeroTarjeta" [textMask]="{mask: numerotarjetaMask}" class="form-control" placeholder="Número de tarjeta">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i 
+                                        class="fas fa-calendar-alt" 
+                                        [class.green-icon] =" this.form.get('fechaExpiracion')?.valid" 
+                                        [class.red-icon] = "this.form.get('fechaExpiracion')?.touched && this.form.get('fechaExpiracion')?.invalid"
+                                        ></i>
+                                    </span>
+                                    <input formControlName="fechaExpiracion" [textMask]="{mask:fechaMask}" class="form-control" placeholder="mm/yy">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i
+                                         class="fas fa-key"
+                                         [class.green-icon] = "this.form.get('cvv')?.valid"
+                                         [class.red-icon]  = "this.form.get('cvv')?.invalid && this.form.get('cvv')?.touched"
+                                        ></i>
+                                    </span>
+                                    <input formControlName="cvv" maxlength="3" type="password" class="form-control" placeholder="cvv">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button [disabled]=!this.form.valid type="submit" class="btn btn-success btn-lg">  <i class="fas fa-database"> 
+                                <!-- &nbsp Crea un espacio -->
+                            </i>&nbsp; Aceptar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">Listado de tarjeta</h5>
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let tarjetas of listadoTarjetas">
+                                    <td>{{tarjetas.titular}}</td>
+                                    <td>{{tarjetas.numeroTarjeta}}</td>
+                                    <td>{{tarjetas.cvv}}</td>
+                                    <!-- textinfo y text-danger son clases de boostrap que cambian el color -->
+                                    <td> <i (click)="editarTarjeta(tarjetas)" class="far fa-edit text-info"> </i> </td>
+                                    <td> <i (click)="eliminarTarjeta(tarjetas.id)" class="far fa-trash-alt text-danger"> </i> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
