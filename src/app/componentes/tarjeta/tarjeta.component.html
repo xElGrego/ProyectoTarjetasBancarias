@@ -17,7 +17,7 @@
                     <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
-                                <i 
+                                <i
                                     class="fas fa-user"
                                     [class.green-icon] ="this.form.get('titular')?.valid"
                                     [class.red-icon] = "this.form.get('titular')?.invalid && this.form.get('titular')?.touched"
@@ -27,10 +27,10 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
-                                <i 
-                                class="fas fa-credit-card"   
+                                <i
+                                class="fas fa-credit-card"
                                 [class.green-icon] = "this.form.get('numeroTarjeta')?.valid"
-                                [class.red-icon] = "this.form.get('numeroTarjeta')?.invalid && this.form.get('numeroTarjeta')?.touched " 
+                                [class.red-icon] = "this.form.get('numeroTarjeta')?.invalid && this.form.get('numeroTarjeta')?.touched "
                                 ></i>
                             </span>
                             <input formControlName="numeroTarjeta" [textMask]="{mask: numerotarjetaMask}" class="form-control" placeholder="Número de tarjeta">
@@ -39,9 +39,9 @@
                             <div class="col-lg-7 col-md-7">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">
-                                        <i 
-                                        class="fas fa-calendar-alt" 
-                                        [class.green-icon] =" this.form.get('fechaExpiracion')?.valid" 
+                                        <i
+                                        class="fas fa-calendar-alt"
+                                        [class.green-icon] =" this.form.get('fechaExpiracion')?.valid"
                                         [class.red-icon] = "this.form.get('fechaExpiracion')?.touched && this.form.get('fechaExpiracion')?.invalid"
                                         ></i>
                                     </span>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2">
-                            <button [disabled]=!this.form.valid type="submit" class="btn btn-success btn-lg">  <i class="fas fa-database"> 
+                            <button [disabled]=!this.form.valid type="submit" class="btn btn-success btn-lg">  <i class="fas fa-database">
                                 <!-- &nbsp Crea un espacio -->
                             </i>&nbsp; Aceptar</button>
                         </div>

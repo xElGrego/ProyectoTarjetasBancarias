@@ -44,7 +44,7 @@ export class TarjetaComponent implements OnInit {
 
     const tarjetaUser: any = {
       titular: this.form.get('titular')?.value,
-      numeroTarjeta: this.form.get('numeroTarjeta',)?.value,
+      numeroTarjeta: this.form.get('numeroTarjeta')?.value,
       fechaExpiracion: this.form.get('fechaExpiracion')?.value,
       cvv: this.form.get('cvv')?.value
     }
